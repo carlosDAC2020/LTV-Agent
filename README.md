@@ -2,6 +2,10 @@
 
 LTV-Agent is a FastAPI-based application that provides an API for analyzing news articles and determining their veracity. It uses a microservices architecture and a multi-step analysis process to provide a comprehensive assessment of the credibility of a news article.
 
+![Inicio de la aplicación](/caps/start.png)
+![Inicio de la aplicación](/caps/running.png)
+![Inicio de la aplicación](/caps/end.png)
+
 ## Features
 
 -   **Multi-step analysis:** The agent performs a comprehensive analysis of a news article, including keyword extraction, related article search, inference, and confidence scoring.

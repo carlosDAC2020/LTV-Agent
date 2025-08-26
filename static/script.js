@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         workflowTracker.classList.remove('hidden');
         renderWorkflow();
         
-        ws = new WebSocket("ws://localhost:8001/agent/ltv/ws");
+        ws = new WebSocket("ws://127.0.0.1:80/agent/ltv/ws");
 
         ws.onopen = () => {
             ws.send(JSON.stringify({ text: promptText }));
