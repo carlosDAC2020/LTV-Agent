@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>TrueShield - Análisis</title>
+</head>
+<body>
+
+    <div class="animated-background">
+        <div class="light-orb"></div>
+        <div class="light-orb"></div>
+        <div class="light-orb"></div>
+    </div>
+
+    <!-- VISTA INICIAL -->
+    <main id="initial-view" class="view view-active">
+        <div class="trueshield-header-initial">
+            <div class="title-line">
+                <i class="bi bi-shield-fill-check"></i>
+                <h1>TrueShield</h1>
+            </div>
+            <p class="header-subtitle">Analizar, Contrastar y Validar</p>
+        </div>
+        <div class="input-wrapper">
+            <textarea id="prompt-input" class="prompt-input" placeholder="Ecribe una noticia..."></textarea>
+            <div id="send-button" class="send-button">
+                <i class="bi bi-arrow-up"></i>
+            </div>
+        </div>
+    </main>
+
+    <!-- VISTA DE RESULTADOS -->
+    <section id="results-view" class="view view-hidden">
+        
+        <header class="results-header">
+            <div class="trueshield-header-results">
+                <div class="title-line">
+                    <i class="bi bi-shield-fill-check"></i>
+                    <h1>TrueShield</h1>
+                </div>
+            </div>
+            <div class="user-profile">
+                <div class="user-icon"><i class="bi bi-person-fill"></i></div>
+            </div>
+        </header>
+
+        <div class="prompt-display-wrapper">
+            <div id="user-prompt-display"></div>
+            <div class="veracity-meter">
+                <div id="meter-circle" class="meter-circle" style="--value: 0">
+                    <span id="meter-value" class="meter-value">--%</span>
+                </div>
+                <span class="meter-label">Veracity Score</span>
+            </div>
+        </div>
+        
+        <div id="keywords-list" class="keywords-section"></div>
+
+        <!-- NUEVO LAYOUT SIN PANELES -->
+        <div class="analysis-layout">
+            <!-- Columna Izquierda para los Items de Información -->
+            <div id="info-column" class="content-column">
+                <!-- Los placeholders y las tarjetas de items se generarán aquí -->
+            </div>
+            
+            <!-- Columna Derecha para el Flujo de Trabajo -->
+            <div id="workflow-column" class="content-column">
+                <div id="workflow-tracker" class="workflow-tracker">
+                    <!-- El estado del proceso se generará aquí -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

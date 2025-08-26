@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+
+
+  ltv_api:
+    build: .
+    container_name: ${LTV_API}
+    command: uv run uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload
+    volumes:
+      - .:/app:cached
+      - venv_data:/app/.venv
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+    depends_on:
+      - brave-mcp
+      - ltv_mcp
+    restart: unless-stopped
+
+  # servidores mcp a utilizar 
+  brave-mcp:
+    image: shoofio/brave-search-mcp-sse:latest
+    container_name: ${BRAVE_MCP}
+    environment:
+      - BRAVE_API_KEY=${BRAVE_API_KEY}
+      - PORT=8080
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  ltv_mcp:
+    build: . 
+    container_name: ${LTV_MCP}
+    command: uv run python -u ltv_mcp/main.py
+    volumes:
+      - .:/app:cached      
+      - venv_data:/app/.venv 
+    env_file:
+      - .env               
+    restart: unless-stopped
+
+  
+
+volumes:
+  venv_data:

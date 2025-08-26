@@ -1,0 +1,58 @@
+{
+  "keywords_extraction": {
+    "instructions": [
+      "Analiza el siguiente texto y extrae la información solicitada. Responde ÚNICAMENTE con un objeto JSON válido que contenga las siguientes claves: 'temporality', 'location', 'keywords', 'subjects'.",
+      "El valor para 'temporality' debe ser una lista de strings con fechas, periodos de tiempo o referencias temporales mencionadas. Si no hay ninguna, devuelve una lista vacía [].",
+      "El valor para 'location' debe ser una lista de strings con nombres de lugares, ciudades, países o ubicaciones geográficas mencionadas. Si no hay ninguna, devuelve una lista vacía [].",
+      "El valor para 'keywords' debe ser una lista de strings con los términos o conceptos clave más importantes del texto. Intenta ser conciso y relevante.",
+      "El valor para 'subjects' debe ser una lista de strings con los nombres de personas, organizaciones o entidades principales mencionadas.",
+      "No incluyas ninguna explicación adicional, solo el objeto JSON."
+    ],
+    "examples": [
+      {
+        "text": "Apple lanza nueva versión de iOS 18 el próximo mes y planea expandir su presencia en España.",
+        "expected_response": "{\"temporality\": [\"próximo mes\"], \"location\": [\"España\"], \"keywords\": [\"iOS 18\", \"Apple\"], \"subjects\": [\"Apple\"]}"
+      }
+    ],
+    "model_config": {
+      "temperature": 0,
+      "max_tokens": 200,
+      "enable_reasoning": false
+    },
+    "structured_response": true
+  },
+  "resumen": {
+    "instructions": [
+      "Resume el siguiente texto en máximo 2 oraciones. Sé claro y conciso. No incluyas explicaciones adicionales."
+    ],
+    "examples": [
+      {
+        "text": "El gobernador presentó un nuevo plan de infraestructura que mejorará las carreteras del país en los próximos cinco años y generará empleo.",
+        "expected_response": "El gobernador anunció un plan de infraestructura para mejorar las carreteras durante los próximos cinco años y crear empleos."
+      }
+    ],
+    "model_config": {
+      "temperature": 0.2,
+      "max_tokens": 100,
+      "enable_reasoning": false
+    },
+    "structured_response": false
+  },
+  "classification_feelings": {
+    "instructions": [
+      "Clasifica el sentimiento del siguiente texto como 'positivo', 'negativo' o 'neutro'. Devuelve solo el string con el sentimiento, sin explicación."
+    ],
+    "examples": [
+      {
+        "text": "Estoy muy contento con el servicio, me ayudaron rápidamente y fueron muy amables.",
+        "expected_response": "positivo"
+      }
+    ],
+    "model_config": {
+      "temperature": 0,
+      "max_tokens": 10,
+      "enable_reasoning": false
+    },
+    "structured_response": false
+  }
+}

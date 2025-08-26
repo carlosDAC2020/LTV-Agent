@@ -1,0 +1,25 @@
+# Ignorar el entorno virtual de Python
+.venv
+venv/
+*.venv
+
+# Ignorar la caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar archivos específicos de IDEs
+.vscode/
+.idea/
+
+# Ignorar el historial de Git
+.git
+.gitignore
+
+# Ignorar el archivo de variables de entorno (no debe ir en la imagen)
+.env
+
+# Otros archivos de configuración local
+docker-compose.yml
+docker-compose.*.yml
