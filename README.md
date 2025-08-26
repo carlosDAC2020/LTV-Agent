@@ -16,7 +16,7 @@ To get started with the LTV-Agent, you will need to have Docker and Docker Compo
 1.  Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/LTV-Agent.git
+git clone https://github.com/carlosDAC2020/LTV-Agent.git
 ```
 
 2.  Create a `.env` file in the root of the project and add the following environment variables:
