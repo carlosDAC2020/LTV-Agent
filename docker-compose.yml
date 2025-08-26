@@ -6,12 +6,12 @@ services:
   ltv_api:
     build: .
     container_name: ${LTV_API}
-    command: uv run uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload
+    command: uv run uvicorn app.main:app --host 0.0.0.0 --port 80 --reload
     volumes:
       - .:/app:cached
       - venv_data:/app/.venv
     ports:
-      - "8001:8001"
+      - "80:80"
     env_file:
       - .env
     depends_on:
