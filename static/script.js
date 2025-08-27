@@ -144,8 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsView.classList.replace('view-hidden', 'view-active');
         workflowTracker.classList.remove('hidden');
         renderWorkflow();
-        
-        ws = new WebSocket("ws://127.0.0.1:80/agent/ltv/ws");
+
+        const wsUrl = window.APP_CONFIG.WS_URL;
+        console.log("url de coneccion : ",wsUrl)
+        ws = new WebSocket(wsUrl);
 
         ws.onopen = () => {
             ws.send(JSON.stringify({ text: promptText }));

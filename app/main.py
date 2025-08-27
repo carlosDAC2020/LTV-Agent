@@ -3,9 +3,13 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles  
 from pathlib import Path
-
+import os
 from app.routers import agents_router
 
+from dotenv import load_dotenv
+
+# cargaando variables de entorno
+load_dotenv()
 
 app = FastAPI(
     title="LTV-api",
@@ -28,10 +32,14 @@ app.include_router(agents_router.router)
 
 @app.get("/", response_class=HTMLResponse)
 async def trueshield(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    ws_host = os.getenv("VM_IP", "127.0.0.1")
+    ws_port = os.getenv("WS_PORT", "80")
+    ws_url = f"ws://{ws_host}:{ws_port}/agent/ltv/ws"
+    print(f"url de coneccion: {ws_url}")
+    return templates.TemplateResponse("index.html", 
+                                      {"request": request,
+                                        "ws_url": ws_url})
 
-
-# Si quieres ejecutar directamente con `python app/main.py` (para depuración rápida, no para producción)
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("app.main:app", host="0.0.0.0", port=80, reload=True)
